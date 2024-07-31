@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/vendor/bootstrap-icons/bootstrap-icons.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="p-4 shadow flex justify-between dark:bg-slate-900 dark:text-white">
+            <a href="{{ url_for('index') }}" class="text-decoration-none text-dark font-bold text-lg text-indigo-600">Paudio</a>
+            <ul class="flex space-x-2">
+                <li>Pricing</li>
+                <li>About</li>
+                <li><span class="bi bi-moon-stars-fill text-indigo-600 dark:text-white p-1 px-2 border rounded-full" onclick="toggleDarkmode()"></span></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+<div class=" grid grid-cols-4 dark:bg-slate-800 dark:text-white">
+<div class="shadow h-full p-2 ">
+    <div><span class="bi bi-cone-striped"></span> <span>my downloads</span></div>
+    <ul class=" font-thin text-sm">
+        <li class="p-4 border-b hover:rounded-md hover:text-white hover:bg-indigo-400 flex justify-between"><div><span class="bi bi-file-earmark-music hover:bi-download "> </span><a  href="">hell yeah or no.opus</a></div> <span  class="text-xs">13:00</span></li>
+        <li class="p-4 border-b hover:rounded-md hover:text-white hover:bg-indigo-400 flex justify-between"><div><span class="bi bi-file-earmark-music hover:bi-download "> </span><a  href="">hell yeah or no.opus</a></div> <span  class="text-xs">13:00</span></li>
+        <li class="p-4 border-b hover:rounded-md hover:text-white hover:bg-indigo-400 flex justify-between"><div><span class="bi bi-file-earmark-music hover:bi-download "> </span><a  href="">hell yeah or no.opus</a></div> <span  class="text-xs">13:00</span></li>
+    </ul>
+</div>
+<div class="p-4 col-span-2">
+    <span class="p-1 text-xs italic">Choose pdf you want to convert to audio</span>
+        <form action="" class="shadow rounded-md p-3 flex justify-between">
+            <input type="file" name="" id="">
+            <button class="text-white bg-indigo-600 p-1 px-2 rounded-md">upload</button>
+        </form>
+
+        <form action="/" method="post" class="shadow p-4 mt-2 rounded-md" id="textform">
+            <textarea name="text" id="" placeholder="enter the text you wish to convert here..." class=" bg-inherit p-2 w-full border rounded-md" rows="14"></textarea>
+            <button class="bg-indigo-600 text-white p-2 rounded-md mt-2">convert</button>
+        </form>
+
+</div>
+<div class="shadow h-full p-2 ">
+   <div class="flex justify-center">
+    <div>
+        <img src="{{ url_for('static', path='/images/user.png') }}" alt="" class="rounded-full w-40 h-40">    
+        <span class="bi bi-pencil p-2 px-3 rounded-full absolute -mt-10 mr-10 text-white bg-indigo-300" onclick="openProfile()"></span>
+    </div>
+   </div>
+   
+   <div class="pt-2">
+    <p class="text-center"><span class="bi bi-stars text-orange-500"></span>kunda061 
+        <br>
+        <span class=" text-gray-400">fullstack dev</span>
+    </p>
+    <ul>
+        <li class="p-2 border-b hover:rounded-md hover:text-white hover:bg-indigo-600"><span class="bi bi-megaphone"></span> Ads</li>
+        <li class="p-2 border-b hover:rounded-md hover:text-white hover:bg-indigo-600"><span class="bi bi-person"></span> Account</li>
+        <li class="p-2 border-b hover:rounded-md hover:text-white hover:bg-indigo-600"><span class="bi bi-file-earmark-text"></span> Policy</li>
+        <li class="p-2 border-b hover:rounded-md hover:text-white hover:bg-indigo-600"><span class="bi bi-person-workspace"></span> Feedback</li>
+        <li class="p-2 border-b hover:rounded-md text-red-600 hover:text-white hover:bg-indigo-600"><span class="bi bi-arrow-right"></span> Logout</li>
+
+    </ul>
+   </div>
+   
+</div>
+    
+</div>        
+    </main>
+    <div id="success"  class="hidden fixed z-50 top-10 mx-[9%] w-[80%] flex flex-row items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div id="successMsg">
+          <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+        </div>
+        <span class="pl-1 bi bi-x-lg" onclick="close(this)"></span>
+      </div>
+
+      <div id="profileModal" class="hidden fixed shadow p-2 rounded-md top-24 mx-[33%] w-auto">
+        <img src="{{ url_for('static', path='/images/user.png') }}" alt="" class=" rounded-md h-80 w-auto">
+        <div class="border-t pt-1 flex justify-between">
+            <div>
+                <button class=" bg-blue-600 text-white p-2 px-3 rounded-full mt-2"> <span class="bi bi-pencil"></span></button>
+                <button class="bg-red-600 text-white p-2 px-3 rounded-full mt-2 ml-1" onclick=""><span class="bi bi-trash"></span> </button>
+            </div>
+            <div>
+                <button class=" bg-indigo-600 text-white p-2 rounded-md mt-2 ml-2" onclick="closeProfile()"> Cancel</button>
+            </div>
+        </div>
+      </div>
+      
+    <script type="module">
+        let textEl = document.querySelector("#textform");
+        textEl.addEventListener('submit', async function(e){
+            e.preventDefault()
+            let x = new FormData(textEl)
+            let data = {text:x.get("text")}
+            let response = await fetch('/',{
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+            let msg = await response.json()
+            Success(msg.message)
+        })
+        
+        function Success(msg){
+            let el = document.getElementById("successMsg");
+            el.innerHTML=msg
+            document.getElementById("success").style.display="block"
+        }
+
+      
+      
+    </script>
+    <script>
+        function close(el){
+            console.log(el)
+            el.parent.style.display='none'
+        }
+        function openProfile(){
+            document.getElementById("profileModal").style.display = "block"
+        }
+        function closeProfile(){
+            document.getElementById("profileModal").style.display = "none"
+        }
+
+//Toggle Dark or Light Theme
+        let page = document.querySelector("html")
+        ///window.matchMedia('(prefers-color-scheme: dark)').matches
+        page.classList.add(localStorage.getItem("theme")??"light")
+
+        function toggleDarkmode(){   
+            if(page.classList.contains("dark")){
+                page.classList.remove("dark")
+                let x =localStorage.setItem("theme", "light")
+                console.log(x)
+            }else{
+                page.classList.add("dark")
+                localStorage.setItem("theme", "dark")
+            }
+        }
+    </script>
+</body>
+</html>

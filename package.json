@@ -1,0 +1,12 @@
+{
+  "name": "pdfaudio",
+  "version": "1.0.0",
+  "description": "```bash\r git clone https://github.com/kundai061/fastapi-prismaORM-starter.git\r cd fastapi-prismaORM-starter",
+  "main": "index.js",
+  "scripts": {
+    "css":"tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
